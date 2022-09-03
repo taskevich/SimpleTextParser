@@ -1,9 +1,10 @@
 #include "Headers.h"
 
-int main() {
+int main() 
+{
 	setlocale(LC_ALL, "ru");
 	// the string to find
-	const wstring words = L"</a>Электрическая";
+	const wstring words = L"<a>Электрическая";
 	// del trash
 	const wstring word = L"</a>";
 	// open file
@@ -18,14 +19,16 @@ int main() {
 
 	wchar_t* begin = buffer + 1;
 	wchar_t* end = begin + readed - words.size();
-	for (wchar_t* curr = begin; curr < end; curr++) {
+	for (wchar_t* curr = begin; curr < end; curr++) 
+	{
 		const wstring szCurr(curr, words.size());
 		if (szCurr == words) {
 			wchar_t* curr2 = curr + word.size();
 			wchar_t* line_begin = curr2;
 
 			while (*curr2) {
-				if (wstring(curr2, 4) == L"</p>") {
+				if (wstring(curr2, 4) == L"</p>") 
+				{
 					const wstring szCurr2(line_begin, curr2);
 					printf("%S", szCurr2.c_str());
 					break;
